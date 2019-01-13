@@ -1,0 +1,17 @@
+PROCEDURE "SNET_PROJECT"."snet.database.procedures::DELETE_PAST_RECORDS" ( 
+    IN SCHOLAR_ID NVARCHAR(3),
+    IN MANAGER_ID NVARCHAR(3),
+    IN JOBS_ID NVARCHAR(3)
+)
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+   DECLARE S_ID INTEGER := TO_INTEGER(:SCHOLAR_ID);
+   DECLARE M_ID INTEGER := TO_INTEGER(:MANAGER_ID);
+   DECLARE J_ID INTEGER := TO_INTEGER(:JOBS_ID);
+   DELETE FROM "SNET_PROJECT"."snet.database.tables::PAST_RECORDS" WHERE SCHOLAR_ID = :S_ID AND MANAGER_ID = :M_ID AND JOBS_ID = :J_ID;
+END

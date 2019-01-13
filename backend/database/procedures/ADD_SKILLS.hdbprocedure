@@ -1,0 +1,16 @@
+PROCEDURE "SNET_PROJECT"."snet.database.procedures::ADD_SKILLS" ( 
+    
+    IN ID NVARCHAR(3),
+    IN NAME NVARCHAR(30)
+)
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+    AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+   DECLARE I_D INTEGER := TO_INTEGER(:ID);
+   UPSERT "SNET_PROJECT"."snet.database.tables::SKILLS" VALUES(:I_D,:NAME) WHERE "ID"=:I_D;
+END

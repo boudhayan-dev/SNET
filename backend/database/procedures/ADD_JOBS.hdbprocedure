@@ -1,0 +1,27 @@
+PROCEDURE "SNET_PROJECT"."snet.database.procedures::ADD_JOBS" (
+    
+    IN ID NVARCHAR(3),
+    IN MANAGER_ID NVARCHAR(3),
+    IN START_DATE NVARCHAR(10),
+    IN END_DATE   NVARCHAR(10),
+    IN DESCRIPTION NVARCHAR(100),
+    IN VACANCY  NVARCHAR(3)
+)
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+   DECLARE I_D INTEGER := TO_INTEGER(:ID);
+   DECLARE M_ID INTEGER := TO_INTEGER(:MANAGER_ID);
+   DECLARE S_DATE DATE := TO_DATE(:START_DATE, 'DD-MM-YYYY');
+   DECLARE E_DATE DATE := TO_DATE(:END_DATE, 'DD-MM-YYYY');
+   DECLARE VAC INTEGER := TO_INTEGER(:VACANCY);
+   
+   UPSERT "SNET_PROJECT"."snet.database.tables::JOBS" VALUES (:I_D,:M_ID,:S_DATE,:E_DATE,:DESCRIPTION,:VAC) WHERE "ID"=:I_D;
+   
+   
+END

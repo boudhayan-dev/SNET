@@ -1,0 +1,7 @@
+table.schemaName = "SNET_PROJECT";
+table.tableType = COLUMNSTORE;
+table.columns = [
+{name = "ID"; sqlType = INTEGER; nullable = false; },
+{name = "NAME"; sqlType = NVARCHAR; nullable = false;length = 30; }
+];
+table.primaryKey.pkcolumns = ["ID"];

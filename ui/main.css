@@ -1,0 +1,11 @@
+.table-wrapper-scroll-y {
+	display: block;
+	max-height: 220px;
+	overflow-y: auto;
+	-ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+
+.totheright{ /*this will align the text to the right*/
+  text-align:right;
+}

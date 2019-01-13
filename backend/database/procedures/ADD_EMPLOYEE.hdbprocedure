@@ -1,0 +1,21 @@
+PROCEDURE "SNET_PROJECT"."snet.database.procedures::ADD_EMPLOYEE" ( 
+   IN ID NVARCHAR(3),
+   IN MANAGER_ID NVARCHAR(3),
+   IN EMAIL NVARCHAR(30),
+   IN NAME NVARCHAR(30),
+   IN BIRTHDATE NVARCHAR(10),
+   IN PHONE NVARCHAR(10)
+    
+)   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+   DECLARE I_D INTEGER := TO_INTEGER(:ID);
+   DECLARE M_ID INTEGER := TO_INTEGER(:MANAGER_ID);
+   DECLARE B_DATE DATE := TO_DATE(:BIRTHDATE,'DD-MM-YYYY');
+   
+   UPSERT "SNET_PROJECT"."snet.database.tables::EMPLOYEE" VALUES( :I_D, :M_ID, :EMAIL, :NAME, :B_DATE, :PHONE) WHERE "ID"=:I_D;
+END;

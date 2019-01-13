@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SNET</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+    
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <script src="delete.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+    	<br>
+    	<div class="col-md-8 col-md-offset-2 totheright">
+    		
+    			<a href="index.html" class="nav-link disabled">Home</a>&emsp;&emsp;&emsp;
+    			<a href="add.html" class="nav-link disabled">Add</a>&emsp;&emsp;&emsp;
+    			<a href="delete.html" class="nav-link active">Delete</a>
+    	
+    	</div>
+        <div class="row">
+        	<div class="col-md-8 col-md-offset-2">
+        		<h3>
+    				1. Scholar
+    			</h3>
+    			<hr>
+				 <div class="input-group">
+				   <input type="text" class="form-control" id="ID_scholar" aria-describedby="emailHelp" placeholder="Enter scholar ID">
+				   <span class="input-group-btn">
+				        <button class="btn btn-default btn-danger" type="button" onClick="delete_scholar()">Submit</button>
+				   </span>
+				</div>
+        	</div>
+        </div>
+        <!--Manager-->
+		<br>
+        <div class="row">
+        	<div class="col-md-8 col-md-offset-2">
+        		<h3>
+    				2. Manager
+    			</h3>
+    			<hr>
+				 <div class="input-group">
+				   <input type="text" class="form-control" id="ID_manager" aria-describedby="emailHelp" placeholder="Enter manager ID">
+				   <span class="input-group-btn">
+				        <button class="btn btn-default btn-danger" type="button" onClick="delete_manager()">Submit</button>
+				   </span>
+				</div>
+        	</div>
+        </div>
+        
+        <!--Employee-->
+		<br>
+        <div class="row">
+        	<div class="col-md-8 col-md-offset-2">
+        		<h3>
+    				3. Employee
+    			</h3>
+    			<hr>
+				 <div class="input-group">
+				   <input type="text" class="form-control" id="ID_employee" aria-describedby="emailHelp" placeholder="Enter employee ID">
+				   <span class="input-group-btn">
+				        <button class="btn btn-default btn-danger" type="button" onClick="delete_employee()">Submit</button>
+				   </span>
+				</div>
+        	</div>
+        </div>
+        
+        <!--Jobs-->
+		<br>
+        <div class="row">
+        	<div class="col-md-8 col-md-offset-2">
+        		<h3>
+    				4. Jobs
+    			</h3>
+    			<hr>
+				 <div class="input-group">
+				   <input type="text" class="form-control" id="ID_jobs" aria-describedby="emailHelp" placeholder="Enter jobs ID">
+				   <span class="input-group-btn">
+				        <button class="btn btn-default btn-danger" type="button" onClick="delete_jobs()">Submit</button>
+				   </span>
+				</div>
+        	</div>
+        </div>
+        
+        <!--Scholar Skills-->
+		<br>
+        <div class="row">
+        	<div class="col-md-8 col-md-offset-2">
+        		<h3>
+    				5. Scholar Skills
+    			</h3>
+    			<hr>
+				 <div class="input-group">
+				    
+				    <input type="text" class="form-control" id="SKILL_ID_ss" placeholder="Enter skill ID">
+				    <span class="input-group-addon">-</span>
+				    <input type="text" class="form-control" id="SCHOLAR_ID_ss" placeholder="Enter scholar ID">
+				</div>
+				<br>
+		        <button class="btn btn-primary btn-danger" type="button" onClick="delete_scholar_skills()">Submit</button>
+				   
+        	</div>
+        </div>
+        
+        
+        <!--Job Application-->
+		<br>
+        <div class="row">
+        	<div class="col-md-8 col-md-offset-2">
+        		<h3>
+    				6. Employee Skills
+    			</h3>
+    			<hr>
+				 <div class="input-group">
+				    <input type="text" class="form-control" id="SKILL_ID_es" placeholder="Enter skill ID">
+				    <span class="input-group-addon">-</span>
+				    <input type="text" class="form-control" id="EMPLOYEE_ID_es" placeholder="Enter employee ID">
+				</div>
+				<br>
+		        <button class="btn btn-primary btn-danger" type="button" onClick="delete_employee_skills()">Submit</button>
+        	</div>
+        </div>
+        
+        
+        <!--Job Skills requirement-->
+		<br>
+        <div class="row">
+        	<div class="col-md-8 col-md-offset-2">
+        		<h3>
+    				7. Job Skill Requirement
+    			</h3>
+    			<hr>
+				 <div class="input-group">
+				    
+				    <input type="text" class="form-control" id="JOB_ID_jsr" placeholder="Enter job ID">
+				    <span class="input-group-addon">-</span>
+				    <input type="text" class="form-control" id="SKILL_ID_jsr" placeholder="Enter skill ID">
+				</div>
+				<br>
+		        <button class="btn btn-primary btn-danger" type="button" onClick="delete_jsr()">Submit</button>
+        	</div>
+        </div>
+        
+        <!--Job Application-->
+		<br>
+        <div class="row">
+        	<div class="col-md-8 col-md-offset-2">
+        		<h3>
+    				8. Job Application
+    			</h3>
+    			<hr>
+				 <div class="input-group">
+				    <input type="text" class="form-control" id="JOB_ID_ja" placeholder="Enter job ID">
+				    <span class="input-group-addon">-</span>
+				    <input type="text" class="form-control" id="SCHOLAR_ID_ja" placeholder="Enter scholar ID">
+				</div>
+				<br>
+		        <button class="btn btn-primary btn-danger" type="button" onClick="delete_ja()">Submit</button>
+        	</div>
+        </div>
+        
+        <!--Job Application-->
+		<br>
+        <div class="row">
+        	<div class="col-md-8 col-md-offset-2">
+        		<h3>
+    				9. Past Records
+    			</h3>
+    			<hr>
+				 <div class="input-group">
+				    <input type="text" class="form-control" id="SCHOLAR_ID_pr" placeholder="Enter scholar ID">
+				    <span class="input-group-addon">-</span>
+				    <input type="text" class="form-control" id="MANAGER_ID_pr" placeholder="Enter manager ID">
+				    <span class="input-group-addon">-</span>
+				    <input type="text" class="form-control" id="JOBS_ID_pr" placeholder="Enter jobs ID">
+				</div>
+				<br>
+		        <button class="btn btn-primary btn-danger" type="button" onClick="delete_pr()">Submit</button>
+        	</div>
+        </div>
+        
+    </div>
+    
+</body>
+</html>

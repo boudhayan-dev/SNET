@@ -1,0 +1,20 @@
+PROCEDURE "SNET_PROJECT"."snet.database.procedures::ADD_EMPLOYEE_SKILLS" ( 
+    IN LEVEL_OF_EXPERIENCE NVARCHAR(2),
+    IN EMPLOYEE_ID NVARCHAR(3),
+    IN SKILL_ID NVARCHAR(3)
+)
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+   DECLARE LOE INTEGER := TO_INTEGER(:LEVEL_OF_EXPERIENCE);
+   DECLARE E_ID INTEGER := TO_INTEGER(:EMPLOYEE_ID);
+   DECLARE S_ID INTEGER := TO_INTEGER(:SKILL_ID);
+   
+   UPSERT "SNET_PROJECT"."snet.database.tables::EMPLOYEE_SKILLS"  VALUES (:LOE,:E_ID,:S_ID) WHERE "EMPLOYEE_ID"=:E_ID AND "SKILL_ID"=:S_ID;
+   
+END

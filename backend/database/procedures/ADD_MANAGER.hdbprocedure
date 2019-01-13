@@ -1,0 +1,21 @@
+PROCEDURE "SNET_PROJECT"."snet.database.procedures::ADD_MANAGER" (
+    
+    IN MID NVARCHAR(3),
+    IN LOB NVARCHAR(30),
+    IN EMAIL NVARCHAR(30),
+    IN TEAM_NAME NVARCHAR(30),
+    IN NAME NVARCHAR(30),
+    IN PHONE NVARCHAR(10)
+    
+)
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+    AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+   DECLARE M_ID INTEGER := TO_INTEGER(:MID);
+   UPSERT "SNET_PROJECT"."snet.database.tables::MANAGER" VALUES(:M_ID,:LOB,:EMAIL,:TEAM_NAME,:NAME,:PHONE) WHERE "MID"=:M_ID;
+END

@@ -1,0 +1,20 @@
+PROCEDURE "SNET_PROJECT"."snet.database.procedures::ADD_JOB_APPLICATION" ( 
+    IN APPLICATION_DATE   NVARCHAR(10),
+    IN SCHOLAR_ID NVARCHAR(3),
+    IN JOBS_ID  NVARCHAR(3)
+)
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+    AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+   DECLARE APP_DATE DATE := TO_DATE(:APPLICATION_DATE, 'DD-MM-YYYY');
+   DECLARE S_ID INTEGER := TO_INTEGER(:SCHOLAR_ID);
+   DECLARE J_ID INTEGER := TO_INTEGER(:JOBS_ID);
+   
+   UPSERT "SNET_PROJECT"."snet.database.tables::JOB_APPLICATION" VALUES (:APP_DATE,:S_ID,:J_ID) WHERE "SCHOLAR_ID"=:S_ID AND "JOB_ID"=:J_ID;
+END 
+

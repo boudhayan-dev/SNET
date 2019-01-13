@@ -1,0 +1,47 @@
+PROCEDURE "SNET_PROJECT"."snet.database.procedures::SCHOLAR_COMPATIBILITY" (IN SID1 INTEGER, IN SID2 INTEGER )
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   READS SQL DATA AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+   SELECT SKILLS."NAME" 
+    AS 
+    "SKILL", "COMPATIBILITY" 
+    FROM 
+    (SELECT 
+        "S1", 
+        ("L1"+"L2")/2 
+        AS 
+        "COMPATIBILITY" 
+        FROM 
+        (SELECT 
+            SKILL_ID 
+            AS 
+            "S1", 
+            LEVEL_OF_EXPERIENCE 
+            AS 
+            "L1" 
+            FROM  "SNET_PROJECT"."snet.database.tables::SCHOLAR_SKILLS" SCHOLAR_SKILLS
+             
+            WHERE 
+            SCHOLAR_ID=:SID1),
+        (SELECT 
+            SKILL_ID 
+            AS 
+            "S2", 
+            LEVEL_OF_EXPERIENCE 
+            AS 
+            "L2" 
+            FROM  "SNET_PROJECT"."snet.database.tables::SCHOLAR_SKILLS" SCHOLAR_SKILLS
+             
+            WHERE 
+            SCHOLAR_ID=:SID2) 
+        WHERE 
+        "S1"="S2"), 
+    "SNET_PROJECT"."snet.database.tables::SKILLS" SKILLS 
+    WHERE 
+    SKILLS."ID"="S1";
+END

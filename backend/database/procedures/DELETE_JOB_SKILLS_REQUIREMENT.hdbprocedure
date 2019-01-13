@@ -1,0 +1,13 @@
+PROCEDURE "SNET_PROJECT"."snet.database.procedures::DELETE_JOB_SKILLS_REQUIREMENT" (
+    IN JOBID NVARCHAR(3), IN SKILL_ID NVARCHAR(3))
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+    AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+   DECLARE I_D INTEGER := TO_INTEGER(:JOBID);
+   DECLARE S_ID INTEGER := TO_INTEGER(:SKILL_ID);
+   DELETE FROM "SNET_PROJECT"."snet.database.tables::JOB_SKILLS_REQUIREMENT" WHERE JOB_ID = :I_D AND SKILL_ID = :S_ID;
+END

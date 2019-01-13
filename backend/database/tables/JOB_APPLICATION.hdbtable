@@ -1,0 +1,8 @@
+table.schemaName = "SNET_PROJECT";
+table.tableType = COLUMNSTORE;
+table.columns = [
+{name = "APPLICATION_DATE"; sqlType = DATE;  },
+{name = "SCHOLAR_ID"; sqlType = INTEGER;  nullable = false;},
+{name = "JOB_ID"; sqlType = INTEGER;  nullable = false;}
+];
+table.primaryKey.pkcolumns = ["SCHOLAR_ID","JOB_ID"];

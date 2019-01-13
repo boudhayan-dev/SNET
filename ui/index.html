@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SNET</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+    
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+    	<br>
+    	<div class="col-md-8 col-md-offset-2 totheright">
+    			<a href="index.html" class="nav-link disabled">Home</a>&emsp;&emsp;&emsp;
+    			<a href="add.html" class="nav-link disabled">Add</a>&emsp;&emsp;&emsp;
+    			<a href="delete.html" class="nav-link active">Delete</a>
+    	
+    	</div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h1>Scholar Net</h1>
+                <hr>
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <p class="lead">Welcome to Scholar Net</p>
+            </div>
+            
+            <br>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <form action="">
+                	<table width="100%">
+                		<strong>Basic Queries:</strong>
+                		<tr>
+                			<td width="20%" >
+	                			<input type="radio" name="get_queries" onClick="get_all_employees()"> View all Employees
+	                		</td>
+	                		<td width="20%" >
+	                			<input type="radio" name="get_queries" onClick="get_all_jobs()"> View all Jobs
+	                		</td>
+	                		<td width="20%" >
+	                			<input type="radio" name="get_queries"  onClick="get_all_managers()"> View all Managers
+	                		</td>
+	                		<td width="20%" >
+	                			<input type="radio" name="get_queries"  onClick="get_all_scholars()"> View all Scholars
+	                		</td>
+	                		<td width="20%" >
+	                			<input type="radio" name="get_queries"  onClick="get_all_skills()"> View all Skills
+	                		</td>
+                		</tr>
+                		</table>
+                		<br>
+                		<!--Queries that require input.-->
+                		<table width="100%">
+                			<tr>
+	                			<td width="33%" >
+		                			<input type="radio" name="get_queries"  onClick="get_employee()"> ID : <input type="text" id="employeeID" placeholder="Enter employee ID">
+		                		</td>
+		                		<td width="33%" >
+		                			<input type="radio" name="get_queries"  onClick="get_manager()"> ID : <input type="text" id="managerID" placeholder="Enter manager ID">
+		                		</td>
+		                		<td width="33%" >
+		                			<input type="radio" name="get_queries" onClick="get_scholar()"> ID : <input type="text" id="scholarID" placeholder="Enter scholar ID">
+		                		</td>
+	                		</tr>
+	                		<tr>
+	                		<td width="33%" >
+	                			<input type="radio" name="get_queries" onClick="get_skill()"> ID : <input type="text" id="skillID" placeholder="Enter skill ID">
+	                		</td>
+	                		<td width="33%" >
+	                			<input type="radio" name="get_queries" onClick="get_job()"> ID : <input type="text"  id="jobID" placeholder="Enter job ID">
+	                		</td>
+                		</tr>
+                		</table>
+                		<br>
+                		<!--Queries that require input SET-2-->
+                		<table width="100%">
+                			<tr>
+                				<td width="50%">
+                					<input type="radio" name="get_queries" onClick="get_job_based_on_skills()"> Job based on Skills : <input type="text" id="scholar_id" placeholder="Enter scholar ID">
+                				</td>
+                				<td width="50%">
+                					<input type="radio" name="get_queries" onClick="get_scholar_help_skill()"> Scholar Help : <input type="text" id="skill_name" placeholder="Enter skill">
+                				</td>
+                			</tr>
+                		</table>
+                		
+                		</table>
+                		<hr>
+                		
+                		<strong>Analytical Queries:</strong>
+                		<table width="100%">
+                		<tr>
+                			
+	                		<td width="33%" >
+	                			<input type="radio" name="get_queries"  onClick="get_scholar_experience()"> Scholar experience
+	                		</td>
+	                		<td width="33%" >
+	                			<input type="radio" name="get_queries"  onClick="get_skill_popularity_distribution()"> Skill popularity distribution
+	                		</td>
+	                		<td width="33%" >
+	                			<input type="radio" name="get_queries" id="skill_popularity_distribution" onClick="get_job_application_distribution()"> Job application distribution
+	                		</td>
+                		</tr>
+                		
+                	</table>
+                	<!--Analytical queries with input-->
+                	<table width="100%">
+                		<tr>
+                			<td width="35%" >
+	                			<input type="radio" name="get_queries"  onClick="get_team_skill_distribution()"> Team skill distribution : 
+	                			<input type="text" id="team_skill_distribution" placeholder="Enter skill">
+	                		</td>
+	                		<td width="65%" >
+	                			<input type="radio" name="get_queries" id="scholar_compatibility" onClick="get_scholar_compatibility()"> Scholar compatibility
+	                			<input type="text" id="scholar_compatibility_1" placeholder="Enter scholar ID 1">
+	                			<input type="text" id="scholar_compatibility_2" placeholder="Enter scholar ID 2">
+	                		</td>
+	                	</tr>
+                	</table>
+                </form>
+            <br><br>
+            </div>
+        </div>
+
+        <div class="row table-wrapper-scroll-y">
+            <div class="col-md-8 col-md-offset-2">
+                <table id="excelDataTable" class="table">
+                </table>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

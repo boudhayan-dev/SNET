@@ -1,0 +1,13 @@
+PROCEDURE "SNET_PROJECT"."snet.database.procedures::SKILLS" ( 
+    IN ID NVARCHAR(3)
+)
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+   DECLARE I_D INTEGER := TO_INTEGER(:ID);
+   DELETE FROM "SNET_PROJECT"."snet.database.tables::SKILLS" WHERE ID = :I_D;
+END

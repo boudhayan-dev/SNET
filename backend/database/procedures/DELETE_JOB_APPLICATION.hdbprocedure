@@ -1,0 +1,14 @@
+PROCEDURE "SNET_PROJECT"."snet.database.procedures::DELETE_JOB_APPLICATION" ( 
+    IN JOB_ID NVARCHAR(3), IN SCHOLAR_ID NVARCHAR(3)
+)
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+   DECLARE I_D INTEGER := TO_INTEGER(:JOB_ID);
+   DECLARE S_ID INTEGER := TO_INTEGER(:SCHOLAR_ID);
+   DELETE FROM "SNET_PROJECT"."snet.database.tables::JOB_APPLICATION" WHERE JOB_ID = :I_D AND SCHOLAR_ID = :S_ID;
+END

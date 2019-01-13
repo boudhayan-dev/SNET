@@ -1,0 +1,38 @@
+PROCEDURE "SNET_PROJECT"."snet.database.procedures::SCHOLAR_EXPERIENCE_PER_SKILL" ( )
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   READS SQL DATA AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+   SELECT 
+    SCHOLAR."NAME" 
+    AS
+    "SCHOLAR", 
+    SKILLS."NAME" 
+    AS 
+    "SKILL",
+    "EXPERIENCE" 
+    FROM 
+    (SELECT 
+        SCHOLAR_ID, 
+        SKILL_ID, 
+        DAYS_BETWEEN(START_DATE,END_DATE) 
+        AS 
+        "EXPERIENCE" 
+        FROM 
+        "SNET_PROJECT"."snet.database.tables::PAST_RECORDS" PAST_RECORDS,
+        "SNET_PROJECT"."snet.database.tables::JOB_SKILLS_REQUIREMENT" JOB_SKILLS_REQUIREMENT 
+        WHERE 
+        JOBS_ID=JOB_ID), 
+    "SNET_PROJECT"."snet.database.tables::SCHOLAR"  SCHOLAR, 
+    "SNET_PROJECT"."snet.database.tables::SKILLS" SKILLS 
+    WHERE 
+    SCHOLAR."ID"=SCHOLAR_ID 
+    AND 
+    SKILLS."ID"=SKILL_ID 
+    ORDER BY 
+    "SCHOLAR";
+END

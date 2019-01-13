@@ -1,0 +1,20 @@
+PROCEDURE "SNET_PROJECT"."snet.database.procedures::JOB_APPLICATION_DISTRIBUTION" ( )
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   READS SQL DATA AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+   SELECT JOB_ID, 
+    COUNT(SCHOLAR_ID) 
+    AS 
+    "NUM OF SCHOLARS" 
+    FROM  "SNET_PROJECT"."snet.database.tables::JOB_APPLICATION"
+    GROUP BY 
+    JOB_ID 
+    ORDER BY 
+    "NUM OF SCHOLARS" 
+    DESC;
+END

@@ -1,0 +1,29 @@
+PROCEDURE "SNET_PROJECT"."snet.database.procedures::ADD_PAST_RECORDS" ( 
+    
+    IN START_DATE  NVARCHAR(10),
+    IN END_DATE NVARCHAR(10),
+    IN SCHOLAR_ID   NVARCHAR(3),
+    IN MANAGER_ID   NVARCHAR(3),
+    IN JOBS_ID      NVARCHAR(3)
+)
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+   
+   DECLARE S_DATE DATE := TO_DATE(:START_DATE,'DD-MM-YYYY');
+   DECLARE E_DATE DATE := TO_DATE(:END_DATE,'DD-MM-YYYY');
+   DECLARE S_ID INTEGER := TO_INTEGER(:SCHOLAR_ID);
+   DECLARE M_ID INTEGER := TO_INTEGER(:MANAGER_ID);
+   DECLARE J_ID INTEGER := TO_INTEGER(:JOBS_ID);
+   
+   UPSERT "SNET_PROJECT"."snet.database.tables::PAST_RECORDS" 
+            VALUES (:S_DATE,:E_DATE,:S_ID,:M_ID,:J_ID) 
+            WHERE "SCHOLAR_ID"=:S_ID 
+            AND "MANAGER_ID"=:M_ID 
+            AND "JOBS_ID"=:J_ID;
+END

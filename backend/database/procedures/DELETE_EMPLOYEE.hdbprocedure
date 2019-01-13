@@ -1,0 +1,14 @@
+PROCEDURE "SNET_PROJECT"."snet.database.procedures::DELETE_EMPLOYEE" ( 
+    IN ID NVARCHAR(3)
+)
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+   DECLARE I_D INTEGER := TO_INTEGER(:ID);
+   DELETE FROM "SNET_PROJECT"."snet.database.tables::EMPLOYEE" WHERE ID = :I_D;
+END

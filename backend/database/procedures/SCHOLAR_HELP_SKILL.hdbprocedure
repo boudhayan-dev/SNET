@@ -1,0 +1,23 @@
+PROCEDURE "SNET_PROJECT"."snet.database.procedures::SCHOLAR_HELP_SKILL" (  IN SKILL_NAME NVARCHAR(30) )
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   READS SQL DATA AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+    SELECT EMPLOYEE."NAME" 
+    FROM 
+    "SNET_PROJECT"."snet.database.tables::EMPLOYEE_SKILLS" EMPLOYEE_SKILLS, 
+    "SNET_PROJECT"."snet.database.tables::EMPLOYEE" EMPLOYEE, 
+    "SNET_PROJECT"."snet.database.tables::SKILLS" SKILLS 
+    WHERE 
+    EMPLOYEE_SKILLS.EMPLOYEE_ID=EMPLOYEE.ID 
+    AND 
+    SKILL_ID=SKILLS.ID 
+    AND
+    SKILLS."NAME"= :SKILL_NAME
+    ORDER BY 
+    LEVEL_OF_EXPERIENCE DESC;
+END

@@ -1,0 +1,14 @@
+PROCEDURE "SNET_PROJECT"."snet.database.procedures::DELETE_MANAGER" (
+    IN MID NVARCHAR(3)
+    
+)
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+   DECLARE I_D INTEGER := TO_INTEGER(:MID);
+   DELETE FROM "SNET_PROJECT"."snet.database.tables::MANAGER" WHERE MID = :I_D;
+END

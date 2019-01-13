@@ -1,0 +1,35 @@
+PROCEDURE "SNET_PROJECT"."snet.database.procedures::TEAM_SKILL_DISTRIBUTION" (IN SKILL_NAME NVARCHAR(30) )
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   READS SQL DATA AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+   SELECT 
+    TEAM_NAME, 
+    "STRENGTH" 
+    FROM 
+    (SELECT 
+        MANAGER_ID, 
+        COUNT(*) AS "STRENGTH" 
+        FROM 
+        "SNET_PROJECT"."snet.database.tables::SCHOLAR" SCHOLAR,
+        "SNET_PROJECT"."snet.database.tables::SCHOLAR_SKILLS" SCHOLAR_SKILLS, 
+        "SNET_PROJECT"."snet.database.tables::SKILLS" SKILLS 
+        WHERE 
+        SCHOLAR."ID" = SCHOLAR_SKILLS."SCHOLAR_ID" 
+        AND 
+        SCHOLAR_SKILLS."SKILL_ID"=SKILLS."ID" 
+        AND 
+        SKILLS."NAME"=:SKILL_NAME 
+        GROUP BY 
+        MANAGER_ID
+        ORDER BY
+        "STRENGTH"
+    ), 
+    "SNET_PROJECT"."snet.database.tables::MANAGER"  MANAGER 
+    WHERE 
+    MANAGER."MID"=MANAGER_ID;
+END
